@@ -13,7 +13,7 @@ public class Main {
         int index = 0;
         int limit = tablica.length - 1;
         while (index <= limit) {
-            int point = (int) Math.ceil((index + limit) / 2);
+            int point = (int) Math.ceil((index + limit) / 2.0);
             int entry = tablica[point];
             if (value > entry) {
                 index = point + 1;
