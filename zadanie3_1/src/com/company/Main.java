@@ -4,8 +4,8 @@ public class Main {
 
     public static void main(String[] args) {
         int[] array = { 4, 5, 7, 11, 12, 15, 15, 21, 40, 45 };
-
-        System.out.println(searchIndex(array,12));
+        int index = searchIndex(array, 12);
+        System.out.println(index);
     }
 
     public static int searchIndex(int[] tablica, int value)
