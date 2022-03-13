@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="685b3c95-1761-4826-9dc3-0b6c7a0f1646" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Laboratorium01/src/WYKLADY/Main1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Laboratorium01/src/WYKLADY/Main2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laboratorium01/out/production/Laboratorium01/com/company/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laboratorium01/out/production/Laboratorium01/com/company/Main3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laboratorium01/out/production/Laboratorium01/com/company/Main4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laboratorium01/out/production/Laboratorium01/com/company/file.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laboratorium01/out/production/Laboratorium01/com/file.txt" beforeDir="false" />
-    </list>
+    <list default="true" id="685b3c95-1761-4826-9dc3-0b6c7a0f1646" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
