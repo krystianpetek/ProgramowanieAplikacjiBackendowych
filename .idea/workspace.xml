@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1b58d246-2fb5-4deb-8025-f41e63a3e7f1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/project-template.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laboratorium01.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/file.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/multipleLineFile.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laboratorium01/INSTRUKCJA/Screenshot 2022-03-22 132419.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laboratorium01/INSTRUKCJA/Screenshot 2022-03-22 140025.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laboratorium01/INSTRUKCJA/info.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laboratorium01/Zadanie1/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laboratorium01/Zadanie1/file.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laboratorium01/Zadanie2/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laboratorium01/Zadanie3/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laboratorium01/Zadanie3/screencapture-dirask-posts-JavaScript-binary-search-algorithm-example-gp5lgD-2022-03-22-14_01_14.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laboratorium01/Zadanie3_2/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laboratorium01/Zadanie3_2/screencapture-dirask-posts-JavaScript-binary-search-algorithm-example-gp5lgD-2022-03-22-14_01_14.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laboratorium01/Zadanie4/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laboratorium01/Zadanie4/screencapture-dirask-posts-JavaScript-calculate-crc32-jMqv8j-2022-03-22-14_02_19.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laboratorium01/Zadanie5/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laboratorium01/Zadanie6/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laboratorium01/Zadanie6/screencapture-dirask-posts-JavaScript-split-string-by-new-line-character-k1wEQp-2022-03-22-15_32_10.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laboratorium01/Zadanie7/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laboratorium01/Zadanie7/Uzytkownik.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laboratorium01/Zadanie7/screencapture-dirask-posts-Java-convert-object-to-JSON-String-with-Jackson-lib-3D7OrD-2022-03-22-15_33_10.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laboratorium01/Zadanie8/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laboratorium01/Zadanie8/Uzytkownik.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Laboratorium01/Zadanie8/screencapture-dirask-posts-Java-parse-JSON-to-object-with-Jackson-lib-jMmzXj-2022-03-22-15_47_04.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/INSTRUKCJA/Screenshot 2022-03-22 132419.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/INSTRUKCJA/Screenshot 2022-03-22 140025.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/INSTRUKCJA/info.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zadanie1/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zadanie1/file.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zadanie2/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zadanie3/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zadanie3/screencapture-dirask-posts-JavaScript-binary-search-algorithm-example-gp5lgD-2022-03-22-14_01_14.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zadanie3_2/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zadanie3_2/screencapture-dirask-posts-JavaScript-binary-search-algorithm-example-gp5lgD-2022-03-22-14_01_14.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zadanie4/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zadanie4/screencapture-dirask-posts-JavaScript-calculate-crc32-jMqv8j-2022-03-22-14_02_19.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zadanie5/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zadanie6/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zadanie6/screencapture-dirask-posts-JavaScript-split-string-by-new-line-character-k1wEQp-2022-03-22-15_32_10.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zadanie7/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zadanie7/Uzytkownik.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zadanie7/screencapture-dirask-posts-Java-convert-object-to-JSON-String-with-Jackson-lib-3D7OrD-2022-03-22-15_33_10.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zadanie8/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zadanie8/Uzytkownik.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zadanie8/screencapture-dirask-posts-Java-parse-JSON-to-object-with-Jackson-lib-jMmzXj-2022-03-22-15_47_04.pdf" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="26kY2D9f03USQuhye9wzPywjvev" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Laboratorium01" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Zadanie8" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main (4)">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Zadanie5.Main" />
+      <module name="Laboratorium01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Zadanie5.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Zadanie4.Main" />
+      <module name="Laboratorium01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Zadanie4.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Zadanie6.Main" />
+      <module name="Laboratorium01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Zadanie6.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Zadanie8.Main" />
+      <module name="Laboratorium01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Zadanie8.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Zadanie7.Main" />
+      <module name="Laboratorium01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Zadanie7.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main (4)" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main (3)" />
+        <item itemvalue="Application.Main (1)" />
+        <item itemvalue="Application.Main (2)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1b58d246-2fb5-4deb-8025-f41e63a3e7f1" name="Changes" comment="" />
+      <created>1647968844957</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1647968844957</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
