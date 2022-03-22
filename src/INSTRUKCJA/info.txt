@@ -1,0 +1,17 @@
+Zadania do wykonania na laboratorium (lab 1) Edit
+Podstawowe:
+
+1. Napisz program konsolowy za pomocą, którego można wyświetlić plik w konsoli (użyj: FileInputStream, try-with-resources)
+2. Napisz program konsolowy za pomocą, którego można zapisać plik używając danych wprowadzonych w konsoli (użyj: FileOutputStream, try-with-resources)
+3. Przepisz program na Java https://dirask.com/posts/JavaScript-binary-search-algorithm-example-gp5lgD
+4. Przepisz program na Java https://dirask.com/posts/JavaScript-calculate-crc32-jMqv8j
+5. Napisz program wypisujacy w konsoli akualny lokalny i globalny czas.
+6. Napisz program rozbijający plik na osobne linie. Wypisz je w konsoli, dodając numery. (https://dirask.com/posts/JavaScript-split-string-by-new-line-character-k1wEQp)
+7. Convert Java object to JSON (https://dirask.com/posts/Java-convert-object-to-JSON-String-with-Jackson-lib-3D7OrD)
+8. Convert JSON to Java object (https://dirask.com/posts/Java-parse-JSON-to-object-with-Jackson-lib-jMmzXj)
+
+Dodatkowo:
+
+1. Utwórz array liste i linked liste, przeliteruj usuwając co drugi element używając iteratora.
+2. Usun duplikacty z tablity używajac HashSet.
+3. Zlicz ilość wystąpień wierszy używając HashMap.
