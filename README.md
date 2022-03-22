@@ -1,3 +1,0 @@
-# ProgramowanieAplikacjiBackendowych
-
-Repozytorium przedmiotu Programowanie Aplikacji Backendowych
