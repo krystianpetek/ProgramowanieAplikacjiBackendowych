@@ -19,7 +19,7 @@ public class Main {
         System.out.println(wynik);
 
         Action fun2 = (a,b) -> a+b;
-        double wynik2 = fun2.sum(5,5);
+        double wynik2 = fun2.sum(5,8);
         System.out.println(wynik2);
 
         // Mały int nei może być null, a Integer klasowy może być nullem, to samo z Long'iem
