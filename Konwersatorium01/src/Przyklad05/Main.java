@@ -27,12 +27,50 @@ public class Main {
         int negacja = ~(-6);
         System.out.println(negacja);
 
+        //  &  <-- binary AND
+//  |  <-- binary OR
+//  ^  <-- binary XOR
+//  ~  <-- binary NOT
+
+
+//    BIN    DEC
+//
+//    1001   9
+//  & 0001   1
+//    ----
+//    0001   1
+
+
+//    BIN    DEC
+//
+//    1001   9
+//  | 0001   1
+//    ----
+//    1001   1
+
+
+//    BIN    DEC
+//
+//    1001   9
+//  ^ 0001   1
+//    ----
+//    1000   9
+
+
+//    BIN    DEC
+//
+//  ~ 1001   9
+//    ----
+//    0110   6
+
         //  string na byte
         String text2 = "";
         String text3 = text2 + "";
-        byte[] ddd = text2.getBytes(StandardCharsets.UTF_8);
+        String text = "Some text here ...";
+        byte[] bytes = text.getBytes(StandardCharsets.UTF_8);  // [83, 111, 109, 101, 32, 116, 101, 120, 116, 32, 104, 101, 114, 101, 32, 46, 46, 46]
 
         // byte na string
-        String sss = new String(ddd,StandardCharsets.UTF_8);
+        String textZbyte = new String(bytes, StandardCharsets.UTF_8);  // Some text here ...
+
     }
 }
