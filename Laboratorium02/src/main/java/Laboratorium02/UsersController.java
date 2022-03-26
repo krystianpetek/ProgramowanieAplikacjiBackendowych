@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class UsersController {
 
@@ -31,5 +34,15 @@ public class UsersController {
 
     //a by wyswietlic szablon przechodzimy do http://localhost:1000/users/
 
+    @RequestMapping("api/products/")
+    @ResponseBody
+    public Object apiUsers(){
+        List<ProductEntity> products = new ArrayList<>();
+        products.add(new ProductEntity(1,"Produkt 1"));
+        products.add(new ProductEntity(2,"Produkt 2"));
+        products.add(new ProductEntity(3,"Produkt 3"));
+        return products;
+    }
 
+    // http://localhost:1000/api/products/ - zwraca dane w postaci JSON z Listy products
 }
