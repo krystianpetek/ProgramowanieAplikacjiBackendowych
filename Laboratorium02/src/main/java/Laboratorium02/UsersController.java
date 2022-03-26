@@ -34,7 +34,7 @@ public class UsersController {
 
     //a by wyswietlic szablon przechodzimy do http://localhost:1000/users/
 
-    @RequestMapping("api/products/")
+    @RequestMapping("api/products")
     @ResponseBody
     public Object apiUsers(){
         List<ProductEntity> products = new ArrayList<>();
