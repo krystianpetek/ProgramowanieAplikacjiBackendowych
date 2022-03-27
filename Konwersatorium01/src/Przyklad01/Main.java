@@ -4,7 +4,7 @@ public class Main {
 
     // TYPY
     public static void main(String[] args) {
-	    System.out.println("test!");
+        System.out.println("test!");
         byte b = 1;
         short s = 1;
         int i = 1;
@@ -19,7 +19,7 @@ public class Main {
         StringBuilder sb = new StringBuilder();
         sb.append("stringBuilder");
 
-        if(S == "s")
+        if (S == "s")
             S += "tring";
 
         //for

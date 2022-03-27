@@ -3,8 +3,7 @@ package Przyklad04;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
 
         Map<String, String> map1 = new HashMap<>();
         Map<String, String> map2 = new TreeMap<>();
@@ -15,7 +14,7 @@ public class Main {
 
         String a = map1.get("A"); // przypisanie wartości klucza "A" do stringa
 
-        if(map1.containsKey("A")) // jesli zawiera klucz "A", to wypisz do konsoli
+        if (map1.containsKey("A")) // jesli zawiera klucz "A", to wypisz do konsoli
         {
             System.out.println(map1.get("A"));
         }
@@ -24,13 +23,12 @@ public class Main {
         Map<String, String> map = map1; // do map, przypisanie HashMapy
         map = map2; // do map przypisanie TreeMapy
 
-        map2.forEach((key,value) -> {
+        map2.forEach((key, value) -> {
             // iteracja map2
         });
 
         Collection<String> values = map.values(); // przypisanie do kolekcji która implementuje Iterable
-        for(String el:values)
-        {
+        for (String el : values) {
             // iteracja w forze
         }
 

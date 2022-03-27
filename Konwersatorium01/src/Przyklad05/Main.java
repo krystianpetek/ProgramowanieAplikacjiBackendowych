@@ -1,14 +1,12 @@
 package Przyklad05;
 
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 
 public class Main {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         // java dostarcza duzo rzeczy
         java.math.BigInteger bigInteger;
-        Integer a=1, b = 2;
+        Integer a = 1, b = 2;
         int x = a ^ b; // - xor 2 liczb
 
         //   AND
