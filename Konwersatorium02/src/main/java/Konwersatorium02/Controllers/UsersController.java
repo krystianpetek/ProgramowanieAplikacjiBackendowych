@@ -25,7 +25,7 @@ public class UsersController {
     }
 
     // http://localhost:8080/api/users?pageNumber=3&usersAmount=20
-    @RequestMapping("/api/users/")
+    @RequestMapping("/api/users")
     @ResponseBody
     public String getApiUsers(
             @RequestParam(defaultValue = "1") Integer pageNumber,
