@@ -1,9 +1,7 @@
 package Laboratorium02;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
@@ -36,11 +34,11 @@ public class UsersController {
 
     @RequestMapping("api/products")
     @ResponseBody
-    public Object apiUsers(){
+    public Object apiUsers() {
         List<ProductEntity> products = new ArrayList<>();
-        products.add(new ProductEntity(1,"Produkt 1"));
-        products.add(new ProductEntity(2,"Produkt 2"));
-        products.add(new ProductEntity(3,"Produkt 3"));
+        products.add(new ProductEntity(1, "Produkt 1"));
+        products.add(new ProductEntity(2, "Produkt 2"));
+        products.add(new ProductEntity(3, "Produkt 3"));
         return products;
     }
 

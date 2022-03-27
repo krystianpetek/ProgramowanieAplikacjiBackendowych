@@ -15,10 +15,9 @@ public class UsersController {
 
     @RequestMapping("/users")
     @ResponseBody
-    public String getUsers()
-    {
+    public String getUsers() {
         StringBuilder sb = new StringBuilder();
-        for(UserEntity val : users.values()){
+        for (UserEntity val : users.values()) {
             sb.append(val.toString());
         }
         return sb.toString();
@@ -26,11 +25,9 @@ public class UsersController {
 
     @GetMapping("/users/{id}/get")
     @ResponseBody
-    public String getUser(Integer id)
-    {
-        for (Integer key : users.keySet())
-        {
-            if(users.containsKey(id))
+    public String getUser(Integer id) {
+        for (Integer key : users.keySet()) {
+            if (users.containsKey(id))
                 return users.get(id).toString();
         }
         return "Nie znaleziono użytkownika";
@@ -42,12 +39,10 @@ public class UsersController {
     public boolean addUser(
             @RequestParam String param1,
             @RequestParam String param2,
-            @RequestParam Integer param3)
-    {
+            @RequestParam Integer param3) {
         UserEntity uzytkownik = new UserEntity(param1, param2, param3);
-        if(uzytkownik.getFirstName() != null && uzytkownik.getLastName() != null && uzytkownik.getAge() != 0)
-        {
-            users.put(1,uzytkownik);
+        if (uzytkownik.getFirstName() != null && uzytkownik.getLastName() != null && uzytkownik.getAge() != 0) {
+            users.put(1, uzytkownik);
             return true;
         }
         return false;
