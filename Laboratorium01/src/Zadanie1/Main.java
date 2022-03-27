@@ -1,9 +1,6 @@
 package Zadanie1;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -17,13 +14,11 @@ public class Main {
 //        readerStream.read(znaki,0,znaki.length);
 //        System.out.println(znaki);
 
-        try
-        {
+        try {
             byte[] data = Files.readAllBytes(Paths.get("file.txt"));
             String text = new String(data, StandardCharsets.UTF_8);
             System.out.println(text);
-        }
-        catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
