@@ -1,4 +1,4 @@
-package Konwersatorium02;
+package Konwersatorium02.Service;
 
 import org.springframework.stereotype.Service;
 

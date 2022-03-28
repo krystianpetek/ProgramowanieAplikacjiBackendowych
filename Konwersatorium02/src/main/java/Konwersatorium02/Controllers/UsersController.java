@@ -1,8 +1,8 @@
 package Konwersatorium02.Controllers;
 
-import Konwersatorium02.PermissionService;
+import Konwersatorium02.Service.PermissionService;
+import Konwersatorium02.Service.UsersService;
 import Konwersatorium02.UserEntity;
-import Konwersatorium02.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class UsersController {
 
     @Autowired
-    private UsersService userService;
+    private UsersService usersService;
 
     @Autowired
     private PermissionService permissionService;
@@ -32,12 +35,12 @@ public class UsersController {
             @RequestParam(required = false) Integer usersAmount
     ) {
         this.permissionService.checkPermission("root");
-        return pageNumber + " " + usersAmount + " " + this.userService.getUsers();
+        return pageNumber + " " + usersAmount + " " + this.usersService.getUsers();
     }
 
     @RequestMapping("/api/users/{id}")
     @ResponseBody
-    public String getApiUsers(
+    public String getApiUsersId(
             @PathVariable Long id,
             @RequestParam(required = false) Boolean details
     ) {
@@ -46,9 +49,23 @@ public class UsersController {
 
     @RequestMapping("/api/users2/{id}")
     @ResponseBody
-    public Object getApiUsers(
+    public Object getApiUsersId2(
             @PathVariable Long id
     ) {
-        return new UserEntity(id);
+        return new UserEntity(id, "John");
+    }
+
+
+    @RequestMapping("/api/users2")
+    @ResponseBody
+    public Object getApiUsers2(
+            @RequestParam(defaultValue = "1") Integer pageNumber,
+            @RequestParam(required = false) Integer usersAmount
+    ) {
+        List<UserEntity> users = new ArrayList<>();
+        users.add(new UserEntity(1L, "Text 1"));
+        users.add(new UserEntity(2L, "Text 2"));
+        users.add(new UserEntity(3L, "Text 3"));
+        return users;
     }
 }
