@@ -10,4 +10,5 @@ public class Konwersatorium02Application {
         SpringApplication.run(Konwersatorium02Application.class, args);
     }
 
+    // POCZYTAĆ O DEPENDENCY INVERSION
 }

@@ -1,5 +1,7 @@
 package Konwersatorium02.Controllers;
 
+import Konwersatorium02.Config.Item;
+import Konwersatorium02.Config.Store;
 import Konwersatorium02.Service.PermissionService;
 import Konwersatorium02.Service.UsersService;
 import Konwersatorium02.UserEntity;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +25,12 @@ public class UsersController {
 
     @Autowired
     private PermissionService permissionService;
+
+    // 1 sposób na dodawanie/odwoływanie Bean'ów
+    @Autowired
+    private Item item;
+    @Autowired
+    private Store store;
 
     @RequestMapping("/users")
     public String users() {
@@ -67,5 +77,15 @@ public class UsersController {
         users.add(new UserEntity(2L, "Text 2"));
         users.add(new UserEntity(3L, "Text 3"));
         return users;
+    }
+
+    // events handling: create / destroy events /// działa z @Controller a także z @Service
+    @PostConstruct
+    private void onCreate(){
+        System.out.println("UsersController: onCreate");
+    }
+    @PreDestroy
+    private void onDestroy(){
+        System.out.println("UsersController: onDestroy");
     }
 }
