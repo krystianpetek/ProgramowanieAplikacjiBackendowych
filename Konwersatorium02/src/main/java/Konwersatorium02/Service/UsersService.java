@@ -20,11 +20,12 @@ public class UsersService {
     // events handling: create / destroy events /// działa z @Controller a także z @Service
     // czas życia, static scope, żyje tak dlugo, jak działa aplikacja
     @PostConstruct
-    private void onCreate(){
+    private void onCreate() {
         System.out.println("UsersService: onCreate");
     }
+
     @PreDestroy
-    private void onDestroy(){
+    private void onDestroy() {
         System.out.println("UsersService: onDestroy");
     }
 }

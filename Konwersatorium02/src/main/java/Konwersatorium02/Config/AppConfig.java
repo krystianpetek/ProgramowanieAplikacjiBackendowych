@@ -11,9 +11,10 @@ public class AppConfig {
     // klase pochodzącą z zewnątrz można przerobić na bean'a
     // @Bean używamy z poziomu @Configuration
     @Bean
-    public Item item(){ // new Item item bean
+    public Item item() { // new Item item bean
         return new Item(); // lub jeśli Item jest interfacem, to dostarczamy jakąs implementacje
     }
+
     @Bean
     public Store store() { // new Store store bean
         return new Store();

@@ -81,11 +81,12 @@ public class UsersController {
 
     // events handling: create / destroy events /// działa z @Controller a także z @Service
     @PostConstruct
-    private void onCreate(){
+    private void onCreate() {
         System.out.println("UsersController: onCreate");
     }
+
     @PreDestroy
-    private void onDestroy(){
+    private void onDestroy() {
         System.out.println("UsersController: onDestroy");
     }
 }
