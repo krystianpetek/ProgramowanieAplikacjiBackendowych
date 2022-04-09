@@ -9,9 +9,9 @@ public class UsersApi {
     private int pagesCount;
     private int pageSize;
     private int totalCount;
-    private Collection<UserEntity> users;
+    private Collection<UserEntityDTO> users;
 
-    public UsersApi(int pageNumber, int pagesCount, int pageSize, int totalCount, Collection<UserEntity> users) {
+    public UsersApi(int pageNumber, int pagesCount, int pageSize, int totalCount, Collection<UserEntityDTO> users) {
         this.pageNumber = pageNumber;
         this.pagesCount = pagesCount;
         this.pageSize = pageSize;
@@ -51,11 +51,11 @@ public class UsersApi {
         this.totalCount = totalCount;
     }
 
-    public Collection<UserEntity> getUsers() {
+    public Collection<UserEntityDTO> getUsers() {
         return users;
     }
 
-    public void setUsers(Collection<UserEntity> users) {
+    public void setUsers(Collection<UserEntityDTO> users) {
         this.users = users;
     }
 }
