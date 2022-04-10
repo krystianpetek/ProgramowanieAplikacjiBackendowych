@@ -1,5 +1,6 @@
 package Laboratorium03;
 
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +15,8 @@ public class UsersController {
         return "Hello World!";
     }
 
-    private final Map<Integer, UserEntity> users = new HashMap<>();
-    private Integer licznik = 1;
+    private ArrayList<UserEntityDTO> users = new ArrayList<>();
+    private Integer count = 1;
 
     @GetMapping("api/users")
     @ResponseBody
@@ -32,14 +33,16 @@ public class UsersController {
         if(pageSize > 100)
             pageSize = 100;
 
-        int pagesCount = 1;
-        if(users.size() > 0)
-            pagesCount = (int)Math.ceil(users.size() / pageSize);
+        double pagesCount;
+        if(users.size() <= pageSize)
+            pagesCount = 1;
+        else
+         pagesCount = Math.ceil(users.size()/ pageSize);
 
-        return new UsersApi(pageNumber, pagesCount, pageSize, users.size(), users);
+        return new UsersApi(pageNumber, (int)pagesCount, pageSize, users.size(), users);
     }
 
-    @GetMapping("/users/{id}/get")
+    @GetMapping("api/users/{id}/get")
     @ResponseBody
     public Object getUser(@PathVariable Integer id) {
         var user = users.get(id);
@@ -48,46 +51,39 @@ public class UsersController {
         }
         return "Nie znaleziono użytkownika";
     }
-//    http://localhost:8080/user/add?imie=Krystian&nazwisko=Petek&wiek=23&email=krystianpetek@gmail.com
-//    http://localhost:8080/user/add?imie=Teresa&nazwisko=Petek&wiek=52&email=teresapetek@gmail.com
-//    http://localhost:8080/user/add?imie=Józef&nazwisko=Petek&wiek=50&email=jozefpetek@gmail.com
-//    http://localhost:8080/user/add?imie=Patrycja&nazwisko=Petek&wiek=25&email=patrycjapetek@gmail.com
-//    http://localhost:8080/user/add?imie=Gabriel&nazwisko=Warchał&wiek=29&email=gabrielwarchal@gmail.com
-//    http://localhost:8080/user/add?imie=Janina&nazwisko=Warchał&wiek=59&email=janinawarchal@gmail.com
-//    http://localhost:8080/user/add?imie=Agnieszka&nazwisko=Warchał&wiek=35&email=agnieszkawarchal@gmail.com
-//    http://localhost:8080/user/add?imie=Krystian&nazwisko=Porębski&wiek=35&email=krystianporebski@gmail.com
-//    http://localhost:8080/user/add?imie=Lena&nazwisko=Porębska&wiek=4&email=lenaporebska@gmail.com
-//    http://localhost:8080/user/add?imie=Grzegorz&nazwisko=Warchał&wiek=41&email=grzegorzwarchal@gmail.com
+//    http://localhost:8080/api/user/add?imie=Krystian&nazwisko=Petek&email=krystianpetek@gmail.com&wiek=23
+//    http://localhost:8080/api/user/add?imie=Teresa&nazwisko=Petek&email=teresapetek@gmail.com&wiek=52
+//    http://localhost:8080/api/user/add?imie=Józef&nazwisko=Petek&email=jozefpetek@gmail.com&wiek=50
+//    http://localhost:8080/api/user/add?imie=Patrycja&nazwisko=Petek&email=patrycjapetek@gmail.com&wiek=25
+//    http://localhost:8080/api/user/add?imie=Gabriel&nazwisko=Warchał&email=gabrielwarchal@gmail.com&wiek=29
+//    http://localhost:8080/api/user/add?imie=Janina&nazwisko=Warchał&email=janinawarchal@gmail.com&wiek=59
+//    http://localhost:8080/api/user/add?imie=Agnieszka&nazwisko=Warchał&email=agnieszkawarchal@gmail.com&wiek=35
+//    http://localhost:8080/api/user/add?imie=Krystian&nazwisko=Porębski&email=krystianporebski@gmail.com&wiek=35
+//    http://localhost:8080/api/user/add?imie=Lena&nazwisko=Porębska&email=lenaporebska@gmail.com&wiek=4
+//    http://localhost:8080/api/user/add?imie=Grzegorz&nazwisko=Warchał&email=grzegorzwarchal@gmail.com&wiek=41
 
-//    http://localhost:8080/user/add?imie=Krystian&nazwisko=Petek&wiek=23
-//    http://localhost:8080/user/add?imie=Teresa&nazwisko=Petek&wiek=52
-//    http://localhost:8080/user/add?imie=Józef&nazwisko=Petek&wiek=50
-//    http://localhost:8080/user/add?imie=Patrycja&nazwisko=Petek&wiek=25
-//    http://localhost:8080/user/add?imie=Gabriel&nazwisko=Warchał&wiek=29
-//    http://localhost:8080/user/add?imie=Janina&nazwisko=Warchał&wiek=59
-//    http://localhost:8080/user/add?imie=Agnieszka&nazwisko=Warchał&wiek=35
-//    http://localhost:8080/user/add?imie=Krystian&nazwisko=Porębski&wiek=35
-//    http://localhost:8080/user/add?imie=Lena&nazwisko=Porębska&wiek=4
-//    http://localhost:8080/user/add?imie=Grzegorz&nazwisko=Warchał&wiek=41
-    @GetMapping("/user/add")
+    @GetMapping("/api/user/add")
     @ResponseBody
     public boolean addUser(
             @RequestParam String imie,
             @RequestParam String nazwisko,
+            @RequestParam String email,
             @RequestParam Integer wiek
             ) {
-        UserEntity uzytkownik = new UserEntity(imie, nazwisko, wiek);
-        users.put(licznik++, uzytkownik);
+
+        UserEntityDTO uzytkownik = new UserEntityDTO(count++, imie + " "+ nazwisko, email);
+        users.add(uzytkownik);
         return true;
     }
 
-    @GetMapping("/users/{id}/remove")
+    @GetMapping("api/users/{id}/remove")
     @ResponseBody
     public boolean removeUser(@PathVariable Integer id) {
-        if (users.containsKey(id)) {
-            users.remove(id);
+        if(users.get(id) == null)
+            return false;
+
+        users.remove(id);
             return true;
-        }
-        return false;
+
     }
 }
