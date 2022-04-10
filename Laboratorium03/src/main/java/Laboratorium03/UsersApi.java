@@ -1,17 +1,17 @@
 package Laboratorium03;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.Map;
 
 public class UsersApi {
     private int  pageNumber;
     private int pagesCount;
     private int pageSize;
     private int totalCount;
-    private Collection<UserEntityDTO> users;
+    private Map<Integer, UserEntity> users;
 
-    public UsersApi(int pageNumber, int pagesCount, int pageSize, int totalCount, Collection<UserEntityDTO> users) {
+    public UsersApi(int pageNumber, int pagesCount, int pageSize, int totalCount, Map<Integer, UserEntity> users) {
         this.pageNumber = pageNumber;
         this.pagesCount = pagesCount;
         this.pageSize = pageSize;
@@ -51,11 +51,11 @@ public class UsersApi {
         this.totalCount = totalCount;
     }
 
-    public Collection<UserEntityDTO> getUsers() {
+    public Map<Integer, UserEntity> getUsers() {
         return users;
     }
 
-    public void setUsers(Collection<UserEntityDTO> users) {
+    public void setUsers(Map<Integer, UserEntity> users) {
         this.users = users;
     }
 }

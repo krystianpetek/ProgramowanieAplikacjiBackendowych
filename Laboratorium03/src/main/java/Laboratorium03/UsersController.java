@@ -3,10 +3,7 @@ package Laboratorium03;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class UsersController {
@@ -26,13 +23,6 @@ public class UsersController {
             @RequestParam(defaultValue = "1", required = false, name = "page-number") Integer pageNumber,
             @RequestParam(defaultValue = "20", required = false, name = "page-size") Integer pageSize
     ) {
-        Collection<UserEntityDTO> usersDTO =
-        for(int i = 0;i<users.size();i++)
-        {
-            var user = users.get(i);
-            usersDTO.add(i,new UserEntityDTO(i,user.firstName + user.lastName, user.email));
-        }
-        
         if(pageNumber < 1)
             pageNumber = 1;
 
@@ -46,7 +36,7 @@ public class UsersController {
         if(users.size() > 0)
             pagesCount = (int)Math.ceil(users.size() / pageSize);
 
-        return new UsersApi(pageNumber, pagesCount, pageSize, users.size(),usersDTO);
+        return new UsersApi(pageNumber, pagesCount, pageSize, users.size(), users);
     }
 
     @GetMapping("/users/{id}/get")
@@ -58,25 +48,35 @@ public class UsersController {
         }
         return "Nie znaleziono użytkownika";
     }
-//
-//    http://localhost:8080/user/add?imie=Krystian&nazwisko=Petek&wiek=23&krystianpetek@gmail.com
-//    http://localhost:8080/user/add?imie=Teresa&nazwisko=Petek&wiek=52&teresapetek@gmail.com
-//    http://localhost:8080/user/add?imie=Józef&nazwisko=Petek&wiek=50&jozefpetek@gmail.com
-//    http://localhost:8080/user/add?imie=Patrycja&nazwisko=Petek&wiek=25&patrycjapetek@gmail.com
-//    http://localhost:8080/user/add?imie=Gabriel&nazwisko=Warchał&wiek=29&gabrielwarchal@gmail.com
-//    http://localhost:8080/user/add?imie=Janina&nazwisko=Warchał&wiek=59&janinawarchal@gmail.com
-//    http://localhost:8080/user/add?imie=Agnieszka&nazwisko=Warchał&wiek=35&agnieszkawarchal@gmail.com
-//    http://localhost:8080/user/add?imie=Krystian&nazwisko=Porębski&wiek=35&krystianporebski@gmail.com
-//    http://localhost:8080/user/add?imie=Lena&nazwisko=Porębska&wiek=4&lenaporebska@gmail.com
-//    http://localhost:8080/user/add?imie=Grzegorz&nazwisko=Warchał&wiek=41&grzegorzwarchal@gmail.com
+//    http://localhost:8080/user/add?imie=Krystian&nazwisko=Petek&wiek=23&email=krystianpetek@gmail.com
+//    http://localhost:8080/user/add?imie=Teresa&nazwisko=Petek&wiek=52&email=teresapetek@gmail.com
+//    http://localhost:8080/user/add?imie=Józef&nazwisko=Petek&wiek=50&email=jozefpetek@gmail.com
+//    http://localhost:8080/user/add?imie=Patrycja&nazwisko=Petek&wiek=25&email=patrycjapetek@gmail.com
+//    http://localhost:8080/user/add?imie=Gabriel&nazwisko=Warchał&wiek=29&email=gabrielwarchal@gmail.com
+//    http://localhost:8080/user/add?imie=Janina&nazwisko=Warchał&wiek=59&email=janinawarchal@gmail.com
+//    http://localhost:8080/user/add?imie=Agnieszka&nazwisko=Warchał&wiek=35&email=agnieszkawarchal@gmail.com
+//    http://localhost:8080/user/add?imie=Krystian&nazwisko=Porębski&wiek=35&email=krystianporebski@gmail.com
+//    http://localhost:8080/user/add?imie=Lena&nazwisko=Porębska&wiek=4&email=lenaporebska@gmail.com
+//    http://localhost:8080/user/add?imie=Grzegorz&nazwisko=Warchał&wiek=41&email=grzegorzwarchal@gmail.com
+
+//    http://localhost:8080/user/add?imie=Krystian&nazwisko=Petek&wiek=23
+//    http://localhost:8080/user/add?imie=Teresa&nazwisko=Petek&wiek=52
+//    http://localhost:8080/user/add?imie=Józef&nazwisko=Petek&wiek=50
+//    http://localhost:8080/user/add?imie=Patrycja&nazwisko=Petek&wiek=25
+//    http://localhost:8080/user/add?imie=Gabriel&nazwisko=Warchał&wiek=29
+//    http://localhost:8080/user/add?imie=Janina&nazwisko=Warchał&wiek=59
+//    http://localhost:8080/user/add?imie=Agnieszka&nazwisko=Warchał&wiek=35
+//    http://localhost:8080/user/add?imie=Krystian&nazwisko=Porębski&wiek=35
+//    http://localhost:8080/user/add?imie=Lena&nazwisko=Porębska&wiek=4
+//    http://localhost:8080/user/add?imie=Grzegorz&nazwisko=Warchał&wiek=41
     @GetMapping("/user/add")
     @ResponseBody
     public boolean addUser(
             @RequestParam String imie,
             @RequestParam String nazwisko,
-            @RequestParam Integer wiek,
-            @RequestParam String email) {
-        UserEntity uzytkownik = new UserEntity(imie, nazwisko, wiek,email);
+            @RequestParam Integer wiek
+            ) {
+        UserEntity uzytkownik = new UserEntity(imie, nazwisko, wiek);
         users.put(licznik++, uzytkownik);
         return true;
     }

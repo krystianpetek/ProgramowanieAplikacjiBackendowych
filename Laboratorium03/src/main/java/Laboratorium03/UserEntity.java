@@ -4,21 +4,11 @@ public class UserEntity {
     public String firstName;
     public String lastName;
     public int age;
-    public String email;
 
-    public UserEntity(String firstName, String lastName, int age, String email) {
+    public UserEntity(String firstName, String lastName, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
-        this.email = email;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getFirstName() {
