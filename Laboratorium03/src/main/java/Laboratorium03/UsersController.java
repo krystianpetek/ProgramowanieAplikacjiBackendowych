@@ -39,7 +39,22 @@ public class UsersController {
         else
          pagesCount = Math.ceil(users.size()/ pageSize);
 
-        return new UsersApi(pageNumber, (int)pagesCount, pageSize, users.size(), users);
+        ArrayList<UserEntityDTO> usersPage = new ArrayList<UserEntityDTO>();
+
+        int start = CalcPagination(pageNumber, pageSize);
+
+        for(int i = start;i<pageSize;i++)
+        {
+            if(users.get(i) == null)
+                break;
+            usersPage.add( users.get(i));
+        }
+        return new UsersApi(pageNumber, (int)pagesCount, pageSize, users.size(), usersPage);
+    }
+
+    private static int CalcPagination(int pageNumber, int pageSize)
+    {
+        return ((pageNumber*pageSize)-pageSize);
     }
 
     @GetMapping("api/users/{id}/get")
