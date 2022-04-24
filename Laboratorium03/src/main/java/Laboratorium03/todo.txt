@@ -1,0 +1,164 @@
+1. Utwórz aplikację Spring Boot, która dostarczy następujące API:
+
+	1. Wyświetlanie dostępnych użytkowników przy użyciu paginacji:
+		URL:
+			/api/users?page-number=1&page-size=20
+		Uwagi:
+			page-number i page-size powinny być opcjonalne
+			dodaj walidację dla page-number i page-size (page-number min 1, page-size min 1 i max 100)
+		Jako odpowiedź JSON:
+			{
+				"pageNumber": 1,
+				"pagesCount": 5,
+				"pageSize": 20,
+				"totalCount": 95,
+				"users": [
+					{
+						"id": 1,
+						"name": "Jan Kowalski",
+						"email": "jan.kowalski@email.com"
+					}
+				]
+			}
+		Podobnie jak:
+			https://dirask.com/api/snippets?pageNumber=1&pageSize=20&dataOrder=newest
+		
+	2. Dodawanie nowego użytkownika przy użyciu:
+		URL:
+			/api/user/create
+		Zapytanie POST jako JSON:
+			{
+				"name": "Jan Kowalski",
+				"email": "jan.kowalski@email.com"
+			}
+		Jako odpowiedź JSON:
+			{
+				"id": 1,
+				"name": "Jan Kowalski",
+				"email": "jan.kowalski@email.com"
+			}
+		Przykładowy kod:
+			@Controller
+			public class UsersController {
+
+				@RequestMapping(
+					value = "/api/user/create",
+					method = RequestMethod.POST,
+					consumes = MediaType.APPLICATION_JSON_VALUE,
+					produces = MediaType.APPLICATION_JSON_VALUE
+				)
+				@ResponseBody
+				public UserEntity createUser(@RequestBody UserEntity user) {
+					//TODO: odwołanie do serwisu
+					return user;
+				}
+			}
+	3. Wyświetlanie pojedynczego użytkownika:
+		URL:
+			/api/users/{id}
+		Jako odpowiedź JSON:
+			{
+				"id": 1,
+				"name": "Jan Kowalski",
+				"email": "jan.kowalski@email.com"
+			}
+
+	4. Aktualizowanie pojedynczego użytkownika:
+		URL:
+			/api/users/{id}/update
+		Zapytanie POST jako JSON:
+			{
+				"name": "Jan Kowalski 2",
+				"email": "jan.kowalski.2@email.com"
+			}
+		Jako odpowiedź JSON:
+			{
+				"id": 1,
+				"name": "Jan Kowalski 2",
+				"email": "jan.kowalski.2@email.com"
+			}
+
+	5. Usuwanie pojedynczego użytkownika:
+		URL:
+			/api/users/{id}/remove
+		Jako odpowiedź JSON:
+			{
+				"result": true
+			}
+
+2. Logikę użytkowników umieść w osobnym serwisie, zapytania przechwytuj w kontrolerze.
+	np. UsersService i UsersController
+
+3. Podczas uruchamiania aplikacji wczytuj użytkowników z pliku, podczas zatrzymywania zapisuj:
+		@Service
+		public class UsersService {
+
+			// ...
+
+			@PostConstruct
+			private void onCreate() {
+				// wczytywanie uzytkowników
+			}
+			
+			@PreDestroy
+			private void onDestroy() {
+				// zapisywanie uzytkowników
+			}
+			
+			// ...
+		}
+	Uwaga: uruchamiaj kod w trybie debugowania, aby onDestroy() mogło być wykonane podczas zatrzymywania aplikacji.
+
+4. Przygotuj przykładowe zapytania do API za pomocą jednego z narzędzi:
+	- komenda curl
+	- static site + JavaScript + AJAX (czyli zapytania w pliku HTML)
+	- Postman lub inne narzędzie
+
+5. Przekształć kod tak, aby w przypadku braku użytkownika zwracany był status 404
+	Przykłady:
+		404:
+			package com.example.demo;
+
+			import org.springframework.http.HttpStatus;
+			import org.springframework.http.MediaType;
+			import org.springframework.http.ResponseEntity;
+			import org.springframework.stereotype.Controller;
+			import org.springframework.web.bind.annotation.RequestMapping;
+
+			@Controller
+			public class HomeController {
+
+				// http://localhost:8080/example
+				//
+				@RequestMapping("/example")
+				public ResponseEntity<?> example() {
+					return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+				}
+			}
+		200:
+			package com.example.demo;
+
+			import org.springframework.http.HttpStatus;
+			import org.springframework.http.MediaType;
+			import org.springframework.http.ResponseEntity;
+			import org.springframework.stereotype.Controller;
+			import org.springframework.web.bind.annotation.RequestMapping;
+
+			@Controller
+			public class HomeController {
+
+				// http://localhost:8080/example
+				//
+				@RequestMapping("/example")
+				public ResponseEntity<?> example() {
+					UserEnity user = new UserEnity(1L, "Jan Kowalski", "jan.kowalski@email.com");
+					return ResponseEntity.status(HttpStatus.OK)
+							.contentType(MediaType.APPLICATION_JSON)
+							.body(user);
+				}
+			}
+
+6. Projekt zaliczeniowy
+	1. Zaproponuj temat swojego projektu zaliczeniowego.
+	2. Przygotuj harmonogram prac w postaci 16-tu głównych zadań, które zrealizujesz.
+	3. Umieść harmonogram w repozytorium w katalogu projekt/.

@@ -1,14 +1,28 @@
 package Laboratorium03;
 
+import Laboratorium03.Service.StringResponseService;
+import Laboratorium03.Service.UserEntityService;
+import Laboratorium03.Service.UsersApiService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.TreeMap;
 
 @Controller
 public class UsersController {
-    private final ArrayList<UserEntityDTO> users = new ArrayList<>();
+
+    private Map<Integer, UserEntityService> usersSet = new TreeMap();
     private Integer count = 0;
+
+    private static int CalcPagination(int pageNumber, int pageSize) {
+        return ( pageSize * pageNumber)+1;
+    }
 
     @GetMapping("api/users")
     @ResponseBody
@@ -16,6 +30,8 @@ public class UsersController {
             @RequestParam(defaultValue = "1", required = false, name = "page-number") Integer pageNumber,
             @RequestParam(defaultValue = "20", required = false, name = "page-size") Integer pageSize
     ) {
+        int sizeSet = usersSet.size();
+
         if(pageNumber < 1)
             pageNumber = 1;
 
@@ -26,74 +42,82 @@ public class UsersController {
             pageSize = 100;
 
         double pagesCount;
-        if(users.size() <= pageSize)
+        if(sizeSet <= pageSize)
             pagesCount = 1;
         else
-            pagesCount = Math.ceil(users.size()/ pageSize);
+            pagesCount = Math.ceil(sizeSet / pageSize);
 
-        ArrayList<UserEntityDTO> usersPage = new ArrayList<>();
+        ArrayList<UserEntityService> usersPage = new ArrayList<>();
 
         int start = CalcPagination(pageNumber-1, pageSize);
         int stop = CalcPagination(pageNumber, pageSize);
 
-        for(int i = start;i<stop;i++)
-        {
-            if(users.size() == 0)
+        for(int i = start;i<stop;i++) {
+            if (sizeSet == 0)
                 break;
-            if(i == users.size())
-                break;
-            usersPage.add( users.get(i));
+            if(usersSet.get(i) == null)
+                continue;
+            usersPage.add(usersSet.get(i));
         }
-        return new UsersApi(pageNumber, (int)pagesCount, pageSize, users.size(), usersPage);
+        return new UsersApiService(pageNumber, (int) pagesCount, pageSize, sizeSet, usersPage);
     }
 
-    @GetMapping("api/users/{id}/get")
+    @RequestMapping(value = "/api/users/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public Object getUser(@PathVariable Integer id) {
-        if(users.size()== 0)
-         return "Nie znaleziono użytkownika";
+    public UserEntityService addUser(
+            @RequestBody UserEntityService user
+    ) {
 
-        var user = users.get(--id);
-        return user;
+        UserEntityService uzytkownik = new UserEntityService(++count, user.name, user.email);
+        usersSet.put(count,uzytkownik);
+        return uzytkownik;
     }
 
-//    http://localhost:8080/api/user/add?imie=Krystian&nazwisko=Petek&email=krystianpetek@gmail.com
-//    http://localhost:8080/api/user/add?imie=Teresa&nazwisko=Petek&email=teresapetek@gmail.com
-//    http://localhost:8080/api/user/add?imie=Józef&nazwisko=Petek&email=jozefpetek@gmail.com
-//    http://localhost:8080/api/user/add?imie=Patrycja&nazwisko=Petek&email=patrycjapetek@gmail.com
-//    http://localhost:8080/api/user/add?imie=Gabriel&nazwisko=Warchał&email=gabrielwarchal@gmail.com
-//    http://localhost:8080/api/user/add?imie=Janina&nazwisko=Warchał&email=janinawarchal@gmail.com
-//    http://localhost:8080/api/user/add?imie=Agnieszka&nazwisko=Warchał&email=agnieszkawarchal@gmail.com
-//    http://localhost:8080/api/user/add?imie=Krystian&nazwisko=Porębski&email=krystianporebski@gmail.com
-//    http://localhost:8080/api/user/add?imie=Lena&nazwisko=Porębska&email=lenaporebska@gmail.com
-//    http://localhost:8080/api/user/add?imie=Grzegorz&nazwisko=Warchał&email=grzegorzwarchal@gmail.com
-    @GetMapping("/api/user/add")
+    @RequestMapping(value = "api/users/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public boolean addUser(
-            @RequestParam String imie,
-            @RequestParam String nazwisko,
-            @RequestParam String email
-            ) {
+    public ResponseEntity<UserEntityService> getUser(@PathVariable Integer id) {
+        UserEntityService user = null;
+        try{
+            user = usersSet.get(id);
+        }
+        catch(IndexOutOfBoundsException e) {}
 
-        UserEntityDTO uzytkownik = new UserEntityDTO(++count, imie + " "+ nazwisko, email);
-        users.add(uzytkownik);
-        return true;
+        if(user == null)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        else
+        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(user);
     }
 
-    @GetMapping("api/users/{id}/remove")
+    @RequestMapping(value = "/api/users/{id}/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public boolean removeUser(@PathVariable Integer id) {
-        if(users.get(id) == null)
-            return false;
+    public ResponseEntity<UserEntityService> updateUser(
+            @PathVariable Integer id,
+            @RequestBody UserEntityService user
+    ) {
+        UserEntityService tempUser = usersSet.get(id);
+        if(tempUser == null)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 
-        users.remove(id);
-            return true;
-
+        tempUser.name = user.name;
+        tempUser.email = user.email;
+        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(tempUser);
     }
 
-    private static int CalcPagination(int pageNumber, int pageSize)
-    {
-        return pageSize * pageNumber;
+    @RequestMapping(value = "/api/users/{id}/remove", method = RequestMethod.GET)
+    @ResponseBody
+    public Object removeUser(@PathVariable Integer id) {
+
+        Boolean response = false;
+
+            var eks= usersSet.get(id);
+            if (eks != null) {
+                usersSet.remove(id);
+                response = true;
+            }
+
+        return new StringResponseService(response);
     }
+
+
 
 }

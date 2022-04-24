@@ -1,11 +1,12 @@
-package Laboratorium03;
+package Laboratorium03.Service;
 
-public class UserEntityDTO {
-    int id;
-    String name;
-    String email;
+public class UserEntityService {
 
-    public UserEntityDTO(int id, String name, String email) {
+    public int id;
+    public String name;
+    public String email;
+
+    public UserEntityService(int id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;
