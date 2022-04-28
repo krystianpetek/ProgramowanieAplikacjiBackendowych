@@ -1,5 +1,7 @@
 package Laboratorium03.Service;
 
+import org.springframework.stereotype.Service;
+
 public class UserEntityService {
 
     public int id;

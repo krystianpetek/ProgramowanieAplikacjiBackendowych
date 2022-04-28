@@ -1,13 +1,9 @@
 package Laboratorium03.Service;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 
-@Service
 public class UsersApiService {
     public int pageNumber;
     public int pagesCount;
@@ -20,15 +16,6 @@ public class UsersApiService {
         this.pageSize = pageSize;
         this.totalCount = totalCount;
         this.users = users;
-    }
-    @PostConstruct
-    private void onCreate() {
-        // wczytywanie uzytkowników
-    }
-
-    @PreDestroy
-    private void onDestroy() {
-        // zapisywanie uzytkowników
     }
 
     public ArrayList<UserEntityService> getUsers() {

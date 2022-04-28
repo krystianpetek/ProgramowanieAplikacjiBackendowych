@@ -1,23 +1,34 @@
 package Laboratorium03;
 
-import Laboratorium03.Service.StringResponseService;
 import Laboratorium03.Service.UserEntityService;
 import Laboratorium03.Service.UsersApiService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.google.gson.Gson;
+import com.sun.source.tree.Tree;
+import org.apache.catalina.User;
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.TreeMap;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
 
 @Controller
 public class UsersController {
 
-    private Map<Integer, UserEntityService> usersSet = new TreeMap();
+    private Map<Integer, UserEntityService> usersSet = new TreeMap<>();
     private Integer count = 0;
 
     private static int CalcPagination(int pageNumber, int pageSize) {
@@ -118,6 +129,56 @@ public class UsersController {
         return new StringResponseService(response);
     }
 
+    @PostConstruct
+    private void onCreate() {
+        try {
+            byte[] data = Files.readAllBytes(Paths.get("listOfUsers.txt"));
+            String text = new String(data, StandardCharsets.UTF_8);
+
+            Gson gson = new Gson();
+            ArrayList<UserEntityService> resp = gson.fromJson(text,ArrayList.class);
+
+            System.out.print(resp);
+
+            for(int i = 0;i<resp.size();i++)
+            {
+                Integer iPlus = i+1;
+                Integer Id = resp.get(i).id;
+                String Name = resp.get(i).name;
+                String Email = resp.get(i).email;
+                usersSet.put(iPlus, new UserEntityService(Id,Name,Email));
+            }
 
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @PreDestroy
+    private void onDestroy() throws IOException {
+
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.writeValue(new File("listOfUsers.txt"), usersSet.values());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public class StringResponseService {
+        public Boolean result;
+
+        public StringResponseService(Boolean x) {
+            result = x;
+        }
+
+        public Boolean getResult() {
+            return result;
+        }
+
+        public void setResult(Boolean result) {
+            this.result = result;
+        }
+    }
 }
