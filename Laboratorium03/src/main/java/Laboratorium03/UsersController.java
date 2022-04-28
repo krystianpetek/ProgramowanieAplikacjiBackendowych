@@ -2,12 +2,9 @@ package Laboratorium03;
 
 import Laboratorium03.Service.UserEntityService;
 import Laboratorium03.Service.UsersApiService;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.google.gson.Gson;
-import com.sun.source.tree.Tree;
-import org.apache.catalina.User;
-import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -78,7 +75,7 @@ public class UsersController {
     public UserEntityService addUser(
             @RequestBody UserEntityService user
     ) {
-
+        count = usersSet.size();
         UserEntityService uzytkownik = new UserEntityService(++count, user.name, user.email);
         usersSet.put(count,uzytkownik);
         return uzytkownik;
@@ -135,21 +132,11 @@ public class UsersController {
             byte[] data = Files.readAllBytes(Paths.get("listOfUsers.txt"));
             String text = new String(data, StandardCharsets.UTF_8);
 
-            Gson gson = new Gson();
-            ArrayList<UserEntityService> resp = gson.fromJson(text,ArrayList.class);
+            ObjectMapper objectMapper = new ObjectMapper();
 
-            System.out.print(resp);
+            Map<Integer,UserEntityService> listaUserow = objectMapper.readValue(text, new TypeReference<TreeMap<Integer,UserEntityService>>(){});
 
-            for(int i = 0;i<resp.size();i++)
-            {
-                Integer iPlus = i+1;
-                Integer Id = resp.get(i).id;
-                String Name = resp.get(i).name;
-                String Email = resp.get(i).email;
-                usersSet.put(iPlus, new UserEntityService(Id,Name,Email));
-            }
-
-
+            usersSet = listaUserow;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -160,7 +147,7 @@ public class UsersController {
 
         try {
             ObjectMapper mapper = new ObjectMapper();
-            mapper.writeValue(new File("listOfUsers.txt"), usersSet.values());
+            mapper.writeValue(new File("listOfUsers.txt"), usersSet);
         } catch (IOException e) {
             e.printStackTrace();
         }

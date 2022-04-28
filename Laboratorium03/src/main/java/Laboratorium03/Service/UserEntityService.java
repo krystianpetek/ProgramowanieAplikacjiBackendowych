@@ -13,6 +13,8 @@ public class UserEntityService {
         this.name = name;
         this.email = email;
     }
+    public UserEntityService(){
+    }
 
     public int getId() {
         return id;
