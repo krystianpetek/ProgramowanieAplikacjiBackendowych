@@ -1,0 +1,17 @@
+APLIKACJA DO OBSŁUGI KINA
+
+stworzenie nowego projektu, aplikacji spring boot, RestAPI
+implementacja modeli kina tj. sale kinowe, filmy, klienci, rezerwacje biletow  
+implementacja bazy danych na podstawie modelu
+impementacja orm np. hibernate lub JPA
+implementacja operacji CRUD sale kinowe, filmy
+implementacja operacji CRUD klienci, rezerwacje biletow
+implementacja pierwszego mikroserwisu ?
+implementacja drugiego mikroserwisu ?
+implementacja komunikacji pomiędzy mikroserwisami
+implementacja systemu logowania (sesja)
+implementacja kolejkowania RabbitMQ
+implementacja UI spring mvc cz1.
+implementacja UI spring mvc cz2.
+zbudowanie wersji produkcyjnej całej aplikacji
+dokumentacja aplikacji, do czego służy, uruchomienie, jak używać, opis query do API
