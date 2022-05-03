@@ -1,0 +1,62 @@
+1. Wyświetlanie dostępnych użytkowników przy użyciu paginacji:
+    http://localhost:8080/api/users?page-size=3&page-number=2
+
+    Zwraca JSON
+    {
+        "pageNumber": 2,
+        "pagesCount": 1,
+        "pageSize": 3,
+        "totalCount": 0,
+        "users": []
+    }
+
+2. Dodawanie nowego użytkownika przy użyciu - URL:
+    http://localhost:8080/api/users/create/
+
+    Zakładka Body -> raw -> JSON przekazuje:
+    {
+        "name":"Krystian Petek",
+        "email":"krystianpetek2@gmail.com"
+    }
+
+    Zwraca JSON
+    {
+        "id": 1,
+        "name": "Krystian Petek",
+        "email": "krystianpetek2@gmail.com"
+    }
+
+3. Wyświetlanie pojedynczego użytkownika:
+    http://localhost:8080/api/users/2/
+
+    Zwraca JSON
+    {
+        "id": 2,
+        "name": "Krystian Petek",
+        "email": "krystianpetek2@gmail.com"
+    }
+
+4. Aktualizowanie pojedynczego użytkownika:
+    http://localhost:8080/api/users/2/update
+    Zakładka Body -> raw -> JSON przekazuje:
+    {
+        "name": "Jan Kowalski 2",
+        "email": "jan.kowalski.2@email.com"
+    }
+
+    Zwraca JSON
+    {
+        "id": 2,
+        "name": "Jan Kowalski 2",
+        "email": "jan.kowalski.2@email.com"
+    }
+
+5. Usuwanie pojedynczego użytkownika:
+    http://localhost:8080/api/users/2/remove
+
+    Zwraca JSON
+    {
+        "result": true
+    }
+
+PYTANIE - czy po usunięciu usera O ID 2, paginacja page-size=3 / page-number=1 ma nadal zwracać 3 wyniki czy tylko te o ID 1 i 3
