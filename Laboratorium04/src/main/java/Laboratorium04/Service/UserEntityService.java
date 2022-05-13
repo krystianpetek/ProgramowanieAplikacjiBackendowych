@@ -1,7 +1,5 @@
 package Laboratorium04.Service;
 
-import org.springframework.stereotype.Service;
-
 public class UserEntityService {
 
     public int id;
@@ -13,7 +11,8 @@ public class UserEntityService {
         this.name = name;
         this.email = email;
     }
-    public UserEntityService(){
+
+    public UserEntityService() {
     }
 
     public int getId() {

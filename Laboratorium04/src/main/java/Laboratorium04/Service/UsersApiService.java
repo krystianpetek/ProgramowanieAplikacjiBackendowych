@@ -1,7 +1,5 @@
 package Laboratorium04.Service;
 
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 
 public class UsersApiService {
@@ -10,6 +8,7 @@ public class UsersApiService {
     public int pageSize;
     public int totalCount;
     public ArrayList<UserEntityService> users;
+
     public UsersApiService(int pageNumber, int pagesCount, int pageSize, int totalCount, ArrayList<UserEntityService> users) {
         this.pageNumber = pageNumber;
         this.pagesCount = pagesCount;

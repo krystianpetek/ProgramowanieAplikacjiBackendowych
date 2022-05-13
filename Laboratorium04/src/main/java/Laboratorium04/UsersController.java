@@ -17,7 +17,9 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.TreeMap;
 
 @Controller
 public class UsersController {
@@ -26,7 +28,7 @@ public class UsersController {
     private Integer count = 0;
 
     private static int CalcPagination(int pageNumber, int pageSize) {
-        return ( pageSize * pageNumber)+1;
+        return (pageSize * pageNumber) + 1;
     }
 
     @GetMapping("api/users")
@@ -37,30 +39,30 @@ public class UsersController {
     ) {
         int sizeSet = usersSet.size();
 
-        if(pageNumber < 1)
+        if (pageNumber < 1)
             pageNumber = 1;
 
-        if(pageSize < 1)
+        if (pageSize < 1)
             pageSize = 1;
 
-        if(pageSize > 100)
+        if (pageSize > 100)
             pageSize = 100;
 
         double pagesCount;
-        if(sizeSet <= pageSize)
+        if (sizeSet <= pageSize)
             pagesCount = 1;
         else
             pagesCount = Math.ceil(sizeSet / pageSize);
 
         ArrayList<UserEntityService> usersPage = new ArrayList<>();
 
-        int start = CalcPagination(pageNumber-1, pageSize);
+        int start = CalcPagination(pageNumber - 1, pageSize);
         int stop = CalcPagination(pageNumber, pageSize);
 
-        for(int i = start;i<stop;i++) {
+        for (int i = start; i < stop; i++) {
             if (sizeSet == 0)
                 break;
-            if(usersSet.get(i) == null)
+            if (usersSet.get(i) == null)
                 continue;
             usersPage.add(usersSet.get(i));
         }
@@ -74,7 +76,7 @@ public class UsersController {
     ) {
         count = usersSet.size();
         UserEntityService uzytkownik = new UserEntityService(++count, user.name, user.email);
-        usersSet.put(count,uzytkownik);
+        usersSet.put(count, uzytkownik);
         return uzytkownik;
     }
 
@@ -82,15 +84,15 @@ public class UsersController {
     @ResponseBody
     public ResponseEntity<UserEntityService> getUser(@PathVariable Integer id) {
         UserEntityService user = null;
-        try{
+        try {
             user = usersSet.get(id);
+        } catch (IndexOutOfBoundsException e) {
         }
-        catch(IndexOutOfBoundsException e) {}
 
-        if(user == null)
+        if (user == null)
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         else
-        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(user);
+            return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(user);
     }
 
     @RequestMapping(value = "/api/users/{id}/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -100,7 +102,7 @@ public class UsersController {
             @RequestBody UserEntityService user
     ) {
         UserEntityService tempUser = usersSet.get(id);
-        if(tempUser == null)
+        if (tempUser == null)
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 
         tempUser.name = user.name;
@@ -114,11 +116,11 @@ public class UsersController {
 
         Boolean response = false;
 
-            var eks= usersSet.get(id);
-            if (eks != null) {
-                usersSet.remove(id);
-                response = true;
-            }
+        var eks = usersSet.get(id);
+        if (eks != null) {
+            usersSet.remove(id);
+            response = true;
+        }
 
         return new StringResponseService(response);
     }
@@ -131,7 +133,8 @@ public class UsersController {
 
             ObjectMapper objectMapper = new ObjectMapper();
 
-            Map<Integer,UserEntityService> listaUserow = objectMapper.readValue(text, new TypeReference<TreeMap<Integer,UserEntityService>>(){});
+            Map<Integer, UserEntityService> listaUserow = objectMapper.readValue(text, new TypeReference<TreeMap<Integer, UserEntityService>>() {
+            });
 
             usersSet = listaUserow;
         } catch (IOException e) {

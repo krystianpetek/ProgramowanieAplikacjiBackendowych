@@ -1,0 +1,45 @@
+<script>
+async function checkUser(){
+    const requestUrl = "/api/user/check";
+    const requestData = {};
+
+    const response = await fetch(requestUrl,
+    {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestData)
+    });
+
+    const responseData = await response.text();
+
+    alert(responseData);
+    console.log(responseData);
+}
+
+async function loginUser(username, password){
+    const requestUrl = "/api/user/login";
+    const requestData = {
+        identifier: username,
+        password: password
+    };
+
+    const response = await fetch(requestUrl,
+    {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestData)
+    });
+
+    const responseData = await response.text();
+
+    alert(responseData);
+    console.log(responseData);
+}
+</script>
+
+<button onclick="checkUser()">checkUser()</button>
+<button onclick="loginUser('admin','admin')">checkUser('admin','admin')</button>
