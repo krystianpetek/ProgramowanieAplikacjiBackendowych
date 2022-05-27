@@ -2,8 +2,8 @@ package Laboratorium04;
 
 public class UserLoginRequest {
 				
-				private String identifier; // username or password
-				private String password;
+	private String identifier; // username or password
+	private String password;
 
 	public String getIdentifier() {
 		return identifier;

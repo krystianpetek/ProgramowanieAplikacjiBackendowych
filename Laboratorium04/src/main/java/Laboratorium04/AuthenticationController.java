@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class AuthenticationController {
-
     @Autowired
     AuthenticationService authenticationService;
 
@@ -31,17 +30,18 @@ public class AuthenticationController {
     @RequestMapping(value = "/api/user/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String loginUser(HttpServletRequest httpServletRequest, @RequestBody UserLoginRequest userLoginRequest) {
-        HttpSession httpSession = httpServletRequest.getSession();
-        Long loggedUserId = (Long) httpSession.getAttribute("logged-user-id");
-        if (loggedUserId != null) {
+
+
+        if(this.authenticationService.checkUser(httpServletRequest))
             return "Error: Jesteś już zalogowany!";
-        }
+
         // TODO - zapytanie do bazy aby sprawdzić dostępnego użytkwnika i pobrać jego ip
-        if (adminUsername.equals(userLoginRequest.getIdentifier()) && adminPassword.equals(userLoginRequest.getPassword()))
+
+        if(this.authenticationService.loginUser(httpServletRequest,userLoginRequest))
         {
-            httpSession.setAttribute("logged-user-id", 1000L);
-            return "Zalogowany!";
+            httpSession.setAttribute("logged-user-id", 1000L)
         }
+
         return "Error: błąd logowania";
     }
 }

@@ -26,6 +26,7 @@ public class AuthenticationService {
     }
 
     public boolean loginUser(HttpServletRequest httpServletRequest, @RequestBody UserLoginRequest userLoginRequest) {
+
         HttpSession httpSession = httpServletRequest.getSession();
         Long loggedUserId = (Long) httpSession.getAttribute("logged-user-id");
         if (loggedUserId != null) {

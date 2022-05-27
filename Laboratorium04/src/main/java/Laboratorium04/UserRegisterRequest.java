@@ -2,9 +2,9 @@ package Laboratorium04;
 
 public class UserRegisterRequest {
 				
-				private String username;
-				private String password;
-				private String email;
+	private String username;
+	private String password;
+	private String email;
 
 	public UserRegisterRequest(String username, String password, String email) {
 		this.username = username;
